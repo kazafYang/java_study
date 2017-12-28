@@ -1,5 +1,4 @@
-
-
+//这是一个java程序，通过获得的cookies，登录指定的网站，并且抓取登录后的页面源代码
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.Header;
