@@ -1,0 +1,810 @@
+排期文档：
+http://wiki.tuan800-inc.com/display/cdrubykfb/12.18-12.29
+http://wiki.tuan800-inc.com/display/cdrubykfb/1.2-1.12
+
+查看拉起的隔离区的日志： 如果使用docker部署的，也可以在下面这个地址里看到部署的接口服务IP，端口默认：12318
+http://172.28.1.112:8080/deloyedserviceviews
+
+酷价wiki文档：
+http://wiki.tuan800-inc.com/pages/viewpage.action?pageId=7689540
+
+折800客户端扫码：
+http://hd.zhe800.com/j/control/share_free/index?_lu_m_k=ukm809Ax
+
+SELECT * FROM `passport_rebate`.users WHERE id=200000239
+
+
+
+dealservice接口：
+http://status.tuanimg.com/cn/dsn/fetch?source=zhe800_wireless&deal_ids=32068248&1sss
+刷新dealservice接口：
+http://172.28.1.114:35919/cn/admin/refresh?deal_id=32068248
+
+
+发现一个问题，就是在更新测试用例的时候，会随着测试用例编号一致而导致被更新覆盖，这也解释了为什么，我的用例一直没见怎么增加的原因
+从现在开始维护一个用例编号，或者将用例编号增加一点什么，增加日期函数不好，应该增加工单号参数，不然永远也无法将用例写完整
+
+李巍巍 本地：
+http://192.168.133.231:8060/login
+
+查看账号申请成为大使的各个状态，其中通过stage_status进行判断 10000 是填写资料 10001 是审核资料未通过 10002 是重新提交照片 20000是申请大使成功
+SELECT * FROM `hui_pre_ambassador`
+
+删除大使数据
+delete FROM wifit.hui_pre_ambassador where passport_id = 200000239;
+delete FROM wifit.hui_ambassador where passport_id = 200000239;
+
+
+惠800后台：
+http://admin.zhe800.com/admin/hui800/template/activities
+
+酷价后台：
+http://admin.zhe800.com/admin/tiao/welcome
+指定时间
+bundle exec rake tbk_order:sync_by_time start_time='2017-11-16 20:51:00' end_time='2017-11-16 20:53:00' RAILS_ENV=production
+
+
+
+866654026122504
+48d5608594396a73e6c8bebb39aaaf6185c4be5b
+
+userId=200000239
+我的酷价用户pid
+pid=mm_126226387_36534090_149626501
+pid=mm_126226387_36534090_149626501
+
+@所有人 线上线下搞了一个测试大使账号 msaihw@163.com 123456taoceshi 账号是牟赛给的测试账号，你们需要验证码的找一下牟赛
+
+@所有人  测试组公共账号 密码已经更新，请大家使用时注意
+内网账号：supertester
+内网密码(11月23日修改)：Zhe800@958#@%
+
+	
+trade_public_elasticsearch
+
+@所有人 酷价相关工单今天开始请大家使用http://test2.tuan800-inc.com/fe/#/?_k=jkw045 新的提测平台进行测试，如果有问题可以继续使用老的提测平台进行。有问题大家及时反馈。新提测平台拉的环境直接使用吐出来的host，不用单独配置nginx，其他使用方法都一样。酷价独立提测平台架构图入口从新地址的
+
+SELECT * FROM `wifit`.`hui_user` WHERE pid='mm_126226387_36534090_149626501'
+
+
+
+5月总结：
+近期EDM的bug数比较多，很多跟财务数据有关，在测试方面需要有所侧重；
+bug主要集中在陈雷的发货物流逻辑，以及曹洋涛负责的报表部分，这里需要有wiki进行业务的梳理
+测试导出报表不细致啊，那么明显的问题，怎么就让测试通过了？
+越着急的工单越应该保证工单质量
+必须要严格的执行冒烟测试啊，想过没上次要是给他弄个冒烟多好
+
+http://zapi.zhe800.com/zhe800_n_api/xsq/session_infos
+
+	
+	
+192.168.100.126 m.kujia.com
+192.168.100.126 passport.kujia.com
+192.168.100.126 j.tiaotiaokujia.com
+192.168.100.126 img1.tiaotiaokujia.com	
+	
+http://hd.zhe800.com/j/cn/api/million/sync_status   同步任务完成状态
+http://hd.zhe800.com/j/cn/api/million/sync_count    同步完成人数
+http://hd.zhe800.com/j/cn/api/million/price_task   分钱任务
+
+`java_wireless`.`million_order`
+`million_user`  339.52  
+
+挑挑测试：
+
+
+
+分类信息接口
+http://wiki.tuan800-inc.com/pages/viewpage.action?pageId=7692311
+
+//同步消息，ＰＵＳＨ通知
+bundle exec rake cpc_message:update_message_list RAILS_ENV=production
+bundle exec rake jifen_coupon:generate_coupon_deals RAILS_ENV=production
+bundle exec rake cpc_message:update_data_service RAILS_ENV=production   （push消息，目前执行这一个就好）
+
+select min(trade_sell_price) from trade_history where code='159915'  and status=0 order by id asc limit 1;
+
+select id,trade_sell_price from trade_history where trade_sell_price=(select min(trade_sell_price) from trade_history where code='$trade_code' and stat_date='$trade_stat_date' and trade_type>=9) limit 1;
+
+更换账号的支付宝账号：
+SELECT * FROM wifit.hui_ambassador WHERE id=188
+变更账户余额：
+SELECT * FROM `accounts` WHERE user_id=200000161
+
+bundle exec rake public:bottom_tab RAILS_ENV=production 同步bottom_tab
+同步二级分类
+bundle exec rake public:recommend_deal RAILS_ENV=production
+bundle exec rake recommend_deal:sec_deal  RAILS_ENV=production   
+
+走sdk 
+https://m.kujia.com/jxh5/cookieconfig?version=1.8.0&platform=android	
+AppConfig里面 "secondForwardType": "0", 
+
+模板rake
+bundle exec rake banner:banners RAILS_ENV=production
+
+http://192.168.133.166:8080/
+ios打包地址变更了,请收藏新地址
+
+
+黎琳 12-20 15:17
+@焦丽，知道酷价的plan=2表示什么吗
+鹊桥=1、通用=2、定向=3、营销=4
+
+
+http://192.168.100.45/  打包文件下载地址
+
+
+http://m.lqhigo.com
+
+域名切换：
+{
+ "status": 1,
+ "result": {
+  "base_url": "m.lqhigo.com",
+  "check_url": "http://apk.tiaotiaokujia.com/pack-repo/checkVersionUpdate",
+  "immediate_login": "http://passport.kujia.com"
+ }
+}
+
+bpafter host
+
+
+
+192.168.100.118:895/k8s_my_2ASjh2_s?id=testenv_9535   后面数字改成自己的隔离区id
+192.168.100.118  m.kujia.com passport.kujia.com
+
+
+192.168.100.126 m.kujia.com
+192.168.100.126 passport.kujia.com
+192.168.100.126 j.tiaotiaokujia.com
+192.168.100.126 img1.tiaotiaokujia.com
+
+
+锌叶  我在测试组下建了一个你们的排期表，你们后续在这里更新即可   http://wiki.tuan800-inc.com/display/cdcsb/8.28-9.8
+
+
+代金券配置》商品详情页支持新手领券
+可用的组合券： C8444C5X
+可用的普通代金券：X7Y444CEGE、M6Y444CG5K
+部分不可用的组合券： BJ444CBR
+不可使用的普通券：7KM444CKXP
+
+
+
+
+
+Q3:
+bug跟进措施：
+
+zhebuy后台新建菜单
+http://zhemanage.tuan800-inc.com/siteMap/
+
+工作中人员使用的通讯录：
+http://wiki.tuan800-inc.com/pages/viewpage.action?pageId=6978613
+
+
+
+类目后台搜索：cd_java_cps_category_web
+如果是cps的storeadmin base环境在搜索框中输入：platform 获得服务的IP地址配置host；
+帮助中心端口：8091 问卷：8092  接口IP搜索：cd_java_cps_helpcenter_finagle
+zhebuy后台接口服务 bj_wtos_zhebuyrule_server 接口测试能够用到IP
+
+
+杨锌叶 12-18 14:34
+getValidDealOperationPoolByDate
+getValidBrandOperationPoolByDate
+getValidBannerOperationPoolByDate   端口号是好多
+8158
+GuangRuleV2Service  端口号：
+
+
+
+前端这边把静态资源域名切换到kujia独立域名了，k环境的host配置会有一些变化。把吐出来的host 里面 j.tiaotiaokujia.com   img1.tiaotiaokujia.com这两个改一下，和酷价域名同样的配置
+
+
+git@git.tuan800-inc.com:mobile_server/zhebuy-manage.git 页面的
+
+git@git.tuan800-inc.com:java/zhebuy-platform.git  页面的，上面那个疑似已经废弃，使用这个
+
+git@git.tuan800-inc.com:mobile_server/zhebuy-task.git  接口的
+
+Q2：6月底前应完成如下事项：
+1、降低edm的bug
+2、执行冒烟测试，保证每个月有冒烟不通过内测问题产生
+3、执行一次团队分享，可以分享业务，zhebuy这边的
+4、对出现的bug进行分析、整理，整理完成放到wiki
+5、周报内容写多一点，多写点实质性的东西
+
+后续财务问题 包括财务功能  都有BI负责。EDM邮件项目、短链项目，李巍巍组负责，其他由CPG张国毅组负责
+BI：运营管理  woss  打点日志 
+cps：客服中心、帮助后台管理、风控中心、系统管理
+EDM:
+CPG:拼团统计数据、 
+
+
+商城极速退款日账
+极速退款日账：
+描述：
+o极速退款当日实退用户成功（平台按比例垫付）：从tb_account_transfer表按success_time时间获取当日transfer_reason=1,2的售后维权退款流水，用source_id联查tb_refund售后维权业务退款表，确认refund_id=source_id的流水中is_fast=1是极速退款的数据，进一步按如下条件获取实退数据
+实退现金：按success_tim时间，取tb_account_transfer表中极速退款的流水，transfer_reason=1,2，transfer_state=3,transferType=1，transfer_category<>102的流水amount值
+实退优惠券补贴：按success_tim时间，取tb_account_transfer表中极速退款的流水，transfer_reason=1,2，transfer_state=3,transferType=2的流水amount值
+实退现金补贴：按success_tim时间，取tb_account_transfer表中极速退款的流水，transfer_reason=1,2，transfer_state=3,transferType=9的流水amount值
+实退积分：按success_tim时间，取tb_account_transfer表中极速退款的流水，transfer_reason=1,2，transfer_state=3,transferType=3的流水amount值
+SQL
+实退现金：
+SELECT SUM(tb_account_transfer.amount) FROM tb_account_transfer LEFT JOIN tb_refund ON tb_refund.refund_id=tb_account_transfer.source_id 
+WHERE tb_account_transfer.success_time>='2017-07-11 00:00:00' AND tb_account_transfer.success_time<'2017-07-12 00:00:00'  
+AND tb_account_transfer.transfer_reason IN (1,2)  AND tb_refund.is_fast=1
+AND tb_account_transfer.transfer_state=3 AND tb_account_transfer.transferType=1 AND tb_account_transfer.transfer_category<>102 
+实退优惠券补贴：
+SELECT SUM(tb_account_transfer.amount) FROM tb_account_transfer LEFT JOIN tb_refund ON tb_refund.refund_id=tb_account_transfer.source_id 
+WHERE tb_account_transfer.success_time>='2017-07-11 00:00:00' AND tb_account_transfer.success_time<'2017-07-12 00:00:00'  
+AND tb_account_transfer.transfer_reason IN (1,2)  AND tb_refund.is_fast=1
+AND tb_account_transfer.transfer_state=3 AND tb_account_transfer.transferType=2 
+实退现金补贴：
+SELECT SUM(tb_account_transfer.amount) FROM tb_account_transfer LEFT JOIN tb_refund ON tb_refund.refund_id=tb_account_transfer.source_id 
+WHERE tb_account_transfer.success_time>='2017-07-11 00:00:00' AND tb_account_transfer.success_time<'2017-07-12 00:00:00'  
+AND tb_account_transfer.transfer_reason IN (1,2)  AND tb_refund.is_fast=1
+AND tb_account_transfer.transfer_state=3 AND tb_account_transfer.transferType=9 
+实退积分：
+SELECT SUM(tb_account_transfer.amount) FROM tb_account_transfer LEFT JOIN tb_refund ON tb_refund.refund_id=tb_account_transfer.source_id 
+WHERE tb_account_transfer.success_time>='2017-07-11 00:00:00' AND tb_account_transfer.success_time<'2017-07-12 00:00:00'  
+AND tb_account_transfer.transfer_reason IN (1,2)  AND tb_refund.is_fast=1
+AND tb_account_transfer.transfer_state=3 AND tb_account_transfer.transferType=3
+
+
+描述：o卖家或客服当日确认收货实扣卖家：从tb_deduct_detail表按seller_process_finish_time时间获取当日source_type=1,2的售后维权退款流水，用source_id联查tb_refund退款表，确认refund_id=source_id的流水中is_fast_refund=1是极速退款的数据，进一步按如下条件获取实扣数据
+实扣卖家现金：按seller_process_finish_time时间，取tb_deduct_detail表中极速退款的流水，source_type=1,2 ，seller_status=3，detail_status<>99，detail_type=1，detail_category<>102的流水cash值
+实扣卖家非现金金额：按seller_process_finish_time时间，取tb_deduct_detail表中极速退款的流水，source_type=1,2 ，seller_status=3，detail_status<>99，detail_type=2,3,9的流水cash值
+实扣卖家现金：
+SELECT SUM(cash) FROM tb_deduct_detail LEFT JOIN tb_refund ON tb_refund.refund_id=tb_deduct_detail.source_id  
+WHERE tb_deduct_detail.seller_process_finish_time>='2017-07-11 00:00:00' AND tb_deduct_detail.seller_process_finish_time<'2017-07-12 00:00:00'
+AND tb_deduct_detail.source_type IN (1,2)  AND  tb_refund.is_fast=1
+AND tb_deduct_detail.seller_status=3 AND tb_deduct_detail.detail_status<>99 
+AND tb_deduct_detail.detail_type=1 AND tb_deduct_detail.detail_category<>102
+实扣卖家非现金金额：
+SELECT SUM(cash) FROM tb_deduct_detail LEFT JOIN tb_refund ON tb_refund.refund_id=tb_deduct_detail.source_id  
+WHERE tb_deduct_detail.seller_process_finish_time>='2017-07-11 00:00:00' AND tb_deduct_detail.seller_process_finish_time<'2017-07-12 00:00:00'
+AND tb_deduct_detail.source_type IN (1,2)  AND  tb_refund.is_fast=1
+AND tb_deduct_detail.seller_status=3 AND tb_deduct_detail.detail_status<>99 
+AND tb_deduct_detail.detail_type IN (2,3,9)
+
+
+
+
+
+
+
+平台收入-日账（应退用户-实扣卖家）
+应退用户-实扣卖家差值：
+优惠券差值：应退用户-实扣卖家  （1-2的值）
+1、应退用户（仅售后维权类型）
+SELECT SUM(amount) FROM tb_account_transfer WHERE operation_time>='2017-07-10 00:00:00' AND operation_time<'2017-07-11 00:00:00' AND transfer_state<>99 AND transferType=2 AND transfer_reason IN (1,2)
+ AND transfer_reason<100
+ 2、实扣卖家（仅售后维权类型）
+SELECT SUM(cash) FROM tb_deduct_detail WHERE seller_process_finish_time>='2017-07-10 00:00:00' AND seller_process_finish_time<'2017-07-11 00:00:00' AND  source_type IN (1,2) AND seller_status=3 AND detail_status<>99 AND detail_type=2
+
+补贴差值：应退用户-实扣卖家（1-2的值）
+1、应退用户（仅售后维权类型）：
+SELECT SUM(amount) FROM tb_account_transfer WHERE operation_time>='2017-07-10 00:00:00' AND operation_time<'2017-07-11 00:00:00' AND transfer_state<>99  AND transferType=9 AND transfer_reason IN (1,2) AND transfer_reason<100
+2、实扣卖家（仅售后维权类型）
+SELECT SUM(cash) FROM tb_deduct_detail WHERE seller_process_finish_time>='2017-07-10 00:00:00' 
+AND seller_process_finish_time<'2017-07-11 00:00:00' AND  source_type IN (1,2) AND seller_status=3 AND detail_status<>99 AND detail_type=9
+
+积分差值：应退用户-实扣卖家（1-2的值）
+1、应退用户（仅售后维权类型）
+SELECT SUM(amount) FROM tb_account_transfer WHERE operation_time>='2017-07-10 00:00:00' AND operation_time<'2017-07-11 00:00:00' AND transfer_state<>99 
+AND transferType=3 AND transfer_reason IN (1,2) AND transfer_reason<100
+2、实扣卖家（仅售后维权类型）
+SELECT SUM(cash) FROM tb_deduct_detail WHERE seller_process_finish_time>='2017-07-10 00:00:00' 
+AND seller_process_finish_time<'2017-07-11 00:00:00' AND  source_type IN (1,2) AND seller_status=3 AND detail_status<>99 AND detail_type=3
+
+
+
+无忧售后整体数据监控（邮件）
+数据E--申诉组数据：
+首次解决时长 ：SELECT SUM(first_solve_time_length) / COUNT(*) / 100 FROM tb_refund_extend
+            WHERE first_solve_time >= '${startDate}' AND first_solve_time < '${endDate}'
+			
+			
+			申诉时长：SELECT AVG((UNIX_TIMESTAMP(result.solve_time)- UNIX_TIMESTAMP(result.complain_time))) / 3600 AS time_diff
+            FROM (SELECT b.refund_id,MIN(b.operation_time) AS solve_time,MAX(a.operation_time) AS complain_time
+            FROM tb_refund_history b JOIN  tb_refund_history a
+            ON b.refund_id = a.refund_id AND a.operation_type = 54 AND b.operation_time > a.operation_time
+            WHERE b.operation_time >= '${startDate}' AND b.operation_time < '${endDate}'
+            AND ((b.operator_type = 2 AND b.operation_type IN(62,63,64,65,2,4,61,36))
+            OR (b.operator_type = 3 AND b.operation_type IN(62,37,4,36,61,63,64,65,67,52))
+            OR (b.operator_type = 4 AND b.operation_type IN(12,18,34))) GROUP BY b.refund_id)result
+            WHERE NOT EXISTS (SELECT 1 FROM tb_refund_history c WHERE c.refund_id = result.refund_id
+            AND c.operation_time > result.complain_time AND c.operation_time < result.solve_time
+            AND ((c.operator_type = 2 AND c.operation_type IN(62,63,64,65,2,4,61,36))
+            OR (c.operator_type = 3 AND c.operation_type IN(62,37,4,36,61,63,64,65,67,52))
+            OR (c.operator_type = 4 AND c.operation_type IN(12,18,34))))
+			
+			
+			
+			首次解决量 ： SELECT b.responsible_person_name,COUNT(*) AS cnt
+            FROM tb_refund_extend a JOIN tb_refund b ON a.refund_id = b.refund_id
+            WHERE first_solve_time >= '${startDate}' AND first_solve_time < '${endDate}'
+            GROUP BY b.responsible_person_name
+			
+			
+			申诉解决量: SELECT tr.responsible_person_name,COUNT(*) AS cnt
+            FROM (SELECT b.refund_id,MIN(b.operation_time) AS solve_time,MAX(a.operation_time) AS complain_time
+            FROM tb_refund_history b JOIN  tb_refund_history a
+            ON b.refund_id = a.refund_id AND a.operation_type = 54 AND b.operation_time > a.operation_time
+            WHERE b.operation_time >= '${startDate}' AND b.operation_time < '${endDate}'
+            AND ((b.operator_type = 2 AND b.operation_type IN(62,63,64,65,2,4,61,36))
+            OR (b.operator_type = 3 AND b.operation_type IN(62,37,4,36,61,63,64,65,67,52))
+            OR (b.operator_type = 4 AND b.operation_type IN(12,18,34))) GROUP BY b.refund_id)result
+            JOIN tb_refund tr ON result.refund_id = tr.refund_id
+            WHERE NOT EXISTS (SELECT 1 FROM tb_refund_history c WHERE c.refund_id = result.refund_id
+            AND c.operation_time > result.complain_time AND c.operation_time < result.solve_time
+            AND ((c.operator_type = 2 AND c.operation_type IN(62,63,64,65,2,4,61,36))
+            OR (c.operator_type = 3 AND c.operation_type IN(62,37,4,36,61,63,64,65,67,52))
+            OR (c.operator_type = 4 AND c.operation_type IN(12,18,34))))
+            GROUP BY tr.responsible_person_name
+
+
+客服补偿数据-- 优惠券发送数据，优惠券补偿数据，补偿原因数据
+优惠券发送金额：
+SELECT SUM(amount) FROM  (SELECT
+        buyer_id AS user_id,
+        buyer_nickname AS nickname,
+        compensate_type AS TYPE,
+        compensate_amount AS amount,
+        order_id,
+        operator_id,
+        operator_name,
+        work_order_number AS work_num,
+        customer_service AS group_type,
+        operation_time AS operate_time,
+        compensate_state AS state,
+        remark,
+        lower_level_compensate_reason AS reason_id
+        FROM tb_compensate WHERE operation_time BETWEEN '2017-06-16' AND '2017-06-17'
+        AND compensate_party=1) AS a
+优惠券发送张数：
+SELECT count(*) FROM  (SELECT
+        buyer_id AS user_id,
+        buyer_nickname AS nickname,
+        compensate_type AS TYPE,
+        compensate_amount AS amount,
+        order_id,
+        operator_id,
+        operator_name,
+        work_order_number AS work_num,
+        customer_service AS group_type,
+        operation_time AS operate_time,
+        compensate_state AS state,
+        remark,
+        lower_level_compensate_reason AS reason_id
+        FROM tb_compensate WHERE operation_time BETWEEN '2017-06-16' AND '2017-06-17'
+        AND compensate_party=1 ) AS a
+现金：
+优惠券发送张数：
+SELECT count(*) FROM  (SELECT
+        buyer_id AS user_id,
+        buyer_nickname AS nickname,
+        compensate_type AS TYPE,
+        compensate_amount AS amount,
+        order_id,
+        operator_id,
+        operator_name,
+        work_order_number AS work_num,
+        customer_service AS group_type,
+        operation_time AS operate_time,
+        compensate_state AS state,
+        remark,
+        lower_level_compensate_reason AS reason_id
+        FROM tb_compensate WHERE operation_time BETWEEN '2017-06-16' AND '2017-06-17'
+        AND compensate_party=1 AND compensate_state=2) AS a
+现金金额：
+SELECT sum(amount) FROM  (SELECT
+        buyer_id AS user_id,
+        buyer_nickname AS nickname,
+        compensate_type AS TYPE,
+        compensate_amount AS amount,
+        order_id,
+        operator_id,
+        operator_name,
+        work_order_number AS work_num,
+        customer_service AS group_type,
+        operation_time AS operate_time,
+        compensate_state AS state,
+        remark,
+        lower_level_compensate_reason AS reason_id
+        FROM tb_compensate WHERE operation_time BETWEEN '2017-06-16' AND '2017-06-17'
+        AND compensate_party=1 AND compensate_state=2) AS a
+
+
+
+商城--毛利率监控：
+付款订单数：
+            SELECT COUNT(DISTINCT order_id) FROM (SELECT  b.order_id,b.product_id,a.pay_time,a.order_state,
+            b.cur_price,b.count,b.postage AS order_detail_postage,b.exchange_cash AS order_detail_exchange_cash,
+            a.closing_price,b.discount_price AS order_detail_discount_price,
+            b.coupon_price,b.cheap_amount,b.cheap_amount_type,
+            b.ext_info
+            FROM tb_order_record a JOIN tb_order_info_record b ON a.order_id = b.order_id
+            WHERE pay_time >= '2017-06-19 00:00:00' AND pay_time < '2017-06-20 00:00:00' AND pay_state = 1) AS a
+付款订单金额：
+ SUM(cur_price * count - IF(bra_typ IN(4,5),s_price,order_detail_discount_price) + order_detail_postage)
+
+
+商城--现金补贴成本监控：
+任务名称：shopSubsidyBudgetStatTask
+<insert id="genStat" parameterType="map">
+        INSERT INTO shop_subsidy_budget_stat(stat_date,from_source,subsidy_type,subsidy_child_type,budget_code,subsidy_name,subsidy_child_name,
+        subsidy_amount,store_subsidy,plat_subsidy,return_amount,store_return,plat_return,real_store_return)
+        SELECT  '${statDate}' AS stat_date, a.from_source,a.act_type,a.act_child_type,a.budget_code,
+        IFNULL(a.act_name,b.act_name) AS act_name,
+        IFNULL(a.act_child_name,b.act_child_name) AS act_child_name,
+        IFNULL(SUM(a.cheap_amount),0) subsidy_amount,
+        IFNULL(SUM(a.store_subsidy),0) store_subsidy,
+        IFNULL(SUM(a.plat_subsidy),0) plat_subsidy,
+        IFNULL(SUM(b.return_amount),0) return_amount,
+        IFNULL(SUM(b.store_return),0) store_return,
+        IFNULL(SUM(b.plat_return),0) plat_return,
+        IFNULL(SUM(IF(b.full_return = 1,b.store_subsidy,0)),0) real_store_return
+        FROM  shop_subsidy_detail a LEFT JOIN shop_subsidy_return b
+        ON a.order_id=b.order_id AND a.product_id=b.product_id AND a.sku_num=b.sku_num
+        WHERE a.pay_time >= '${statDateBegin}' <![CDATA[  AND a.pay_time < '${statDateEnd}' ]]>
+        GROUP BY a.from_source,a.act_type,a.act_child_type,a.budget_code;
+    </insert>
+
+    <insert id="genStatTotal" parameterType="map">
+        INSERT INTO shop_subsidy_budget_stat(stat_date,from_source,subsidy_type,subsidy_child_type,budget_code,subsidy_name,
+        subsidy_child_name,subsidy_amount,store_subsidy,plat_subsidy,return_amount,store_return,plat_return,real_store_return)
+        SELECT  '${statDate}' AS stat_date, 0 AS from_source,a.act_type,a.act_child_type,a.budget_code,
+        IFNULL(a.act_name,b.act_name) AS act_name,
+        IFNULL(a.act_child_name,b.act_child_name) AS act_child_name,
+        IFNULL(SUM(a.cheap_amount),0) subsidy_amount,
+        IFNULL(SUM(a.store_subsidy),0) store_subsidy,
+        IFNULL(SUM(a.plat_subsidy),0) plat_subsidy,
+        IFNULL(SUM(b.return_amount),0) return_amount,
+        IFNULL(SUM(b.store_return),0) store_return,
+        IFNULL(SUM(b.plat_return),0) plat_return,
+        IFNULL(SUM(IF(b.full_return = 1,b.store_subsidy,0)),0) real_store_return
+        FROM  shop_subsidy_detail a LEFT JOIN shop_subsidy_return b
+        ON a.order_id=b.order_id AND a.product_id=b.product_id AND a.sku_num=b.sku_num
+        WHERE a.pay_time >= '2017-05-01 00:00:00'   AND a.pay_time < '2017-06-01 00:00:00'
+        GROUP BY a.act_type,a.act_child_type,a.budget_code
+    </insert>
+
+    <update id="updateSubsidy" parameterType="map">
+        <![CDATA[
+            UPDATE shop_subsidy_budget_stat result JOIN (
+            SELECT c.from_source,c.act_type,c.act_child_type,c.budget_code,
+            IFNULL(SUM(c.cheap_amount),0) subsidy_amount,
+            IFNULL(SUM(c.store_subsidy),0) store_subsidy,
+            IFNULL(SUM(c.plat_subsidy),0) plat_subsidy
+            FROM  shop_subsidy_detail c
+            WHERE pay_time >= '${statDateBegin}' AND pay_time < '${statDateEnd}'
+            GROUP BY c.from_source,c.act_type,c.act_child_type,c.budget_code) value_out
+            ON result.from_source = value_out.from_source AND result.budget_code = value_out.budget_code
+            AND (result.subsidy_type = value_out.act_type
+            AND (( result.subsidy_child_type = value_out.act_child_type) OR
+            (result.subsidy_child_type IS NULL AND value_out.act_child_type  IS NULL)))
+            AND result.stat_date = '${statDate}'
+            SET result.subsidy_amount = value_out.subsidy_amount,result.store_subsidy = value_out.store_subsidy,
+            result.plat_subsidy = value_out.plat_subsidy
+        ]]>
+    </update>
+
+    <update id="updateSubsidyTotal" parameterType="map">
+        <![CDATA[
+            UPDATE shop_subsidy_budget_stat result JOIN (
+            SELECT 0 AS from_source,c.act_type,c.act_child_type,c.budget_code,
+            IFNULL(SUM(c.cheap_amount),0) subsidy_amount,
+            IFNULL(SUM(c.store_subsidy),0) store_subsidy,
+            IFNULL(SUM(c.plat_subsidy),0) plat_subsidy
+            FROM  shop_subsidy_detail c
+            WHERE pay_time >= '${statDateBegin}' AND pay_time < '${statDateEnd}'
+            GROUP BY c.act_type,c.act_child_type,c.budget_code) value_out
+            ON result.from_source = value_out.from_source AND result.budget_code = value_out.budget_code
+            AND (result.subsidy_type = value_out.act_type
+            AND (( result.subsidy_child_type = value_out.act_child_type) OR
+            (result.subsidy_child_type IS NULL AND value_out.act_child_type  IS NULL)))
+            AND result.stat_date = '${statDate}'
+            SET result.subsidy_amount = value_out.subsidy_amount,result.store_subsidy = value_out.store_subsidy,
+            result.plat_subsidy = value_out.plat_subsidy
+        ]]>
+
+    </update>
+
+    <update id="updateRealStoreReturn" parameterType="map">
+        <![CDATA[
+            UPDATE shop_subsidy_budget_stat result JOIN (
+             SELECT from_source,act_type,act_child_type,budget_code,
+            IFNULL(SUM(IF(full_return = 1,store_subsidy,0)),0) real_store_return FROM (
+            SELECT * FROM  shop_subsidy_return c
+             WHERE pay_time >= '${statDateBegin}' AND pay_time < '${statDateEnd}'
+             GROUP BY c.order_id,c.product_id,c.sku_num) distinct_out
+             GROUP BY from_source,act_type,act_child_type,budget_code) value_out
+             ON result.from_source = value_out.from_source AND  result.budget_code = value_out.budget_code
+             AND (result.subsidy_type = value_out.act_type
+             AND (( result.subsidy_child_type = value_out.act_child_type) OR
+             (result.subsidy_child_type IS NULL AND value_out.act_child_type  IS NULL)))
+            AND result.stat_date = '${statDate}'
+            SET result.real_store_return = value_out.real_store_return
+        ]]>
+    </update>
+
+    <update id="updateRealStoreReturnTotal" parameterType="map">
+        <![CDATA[
+            UPDATE shop_subsidy_budget_stat result JOIN (
+             SELECT 0 AS from_source,act_type,act_child_type,budget_code,
+            IFNULL(SUM(IF(full_return = 1,store_subsidy,0)),0) real_store_return FROM (
+            SELECT * FROM  shop_subsidy_return c
+             WHERE pay_time >= '${statDateBegin}' AND pay_time < '${statDateEnd}'
+             GROUP BY c.order_id,c.product_id,c.sku_num) distinct_out
+             GROUP BY act_type,act_child_type,budget_code) value_out
+             ON result.from_source = value_out.from_source AND  result.budget_code = value_out.budget_code
+             AND (result.subsidy_type = value_out.act_type
+             AND (( result.subsidy_child_type = value_out.act_child_type) OR
+             (result.subsidy_child_type IS NULL AND value_out.act_child_type  IS NULL)))
+            AND result.stat_date = '${statDate}'
+            SET result.real_store_return = value_out.real_store_return
+        ]]>
+
+    </update>
+
+
+
+
+钱包收入日对账：
+退货返运费=1+2
+1、
+SELECT SUM(amount) FROM `tb_account_transfer` WHERE success_time>='2017-03-20 00:00:00' AND success_time<'2017-03-21 00:00:00'
+AND transfer_reason=5 AND transferType=4 AND transfer_state=3 AND payType=44
+2、
+SELECT SUM(compensate_amount) FROM `tb_compensate` WHERE operation_time >='2017-03-20 00:00:00' AND operation_time <'2017-03-21 00:00:00'
+AND compensate_party=2 AND compensate_reason=36 AND compensate_type=2 AND compensate_state=2 
+
+
+业务数据来源（补偿-平台赔付）：
+SELECT SUM(compensate_amount) FROM `tb_compensate` WHERE operation_time >='2017-03-20 00:00:00' AND operation_time <'2017-03-21 00:00:00'
+AND compensate_party=1 AND compensate_type=2 AND compensate_state=2
+
+业务数据来源（补偿扣卖家保证金）：4+5+6
+4、补偿-退货补偿：
+SELECT SUM(amount) FROM `tb_account_transfer` WHERE success_time>='2017-03-20 00:00:00' AND success_time<'2017-03-21 00:00:00'
+AND transfer_reason=5 AND transferType=5 AND transfer_state=3 AND payType=44
+
+5、补偿-扣卖家保证金（补偿买家部分货款）
+SELECT SUM(compensate_amount) FROM `tb_compensate` WHERE operation_time >='2017-03-20 00:00:00' AND operation_time <'2017-03-21 00:00:00'
+AND compensate_party=2 AND compensate_reason=37 AND compensate_type=2 AND compensate_state=2
+
+6、补偿-扣卖家保证金 （商家未兑现承诺）
+SELECT SUM(compensate_amount) FROM `tb_compensate` WHERE operation_time >='2017-03-20 00:00:00' AND operation_time <'2017-03-21 00:00:00'
+AND compensate_party=2 AND compensate_reason=38 AND compensate_type=2 AND compensate_state=2
+
+
+
+商城-优惠券补贴日账 任务：shopCouponReturnTask、shopCouponDetailTask、shopCouponDailyTask(按照任务的先后顺序执行)
+商城当日因退款返还(按比例)：
+ SELECT SUM(amount) FROM (SELECT result.*,b.closing_price,b.coupon_price
+            FROM (SELECT a.order_id,a.couponCode,SUM(a.amount) AS amount  FROM tb_account_transfer a
+            WHERE a.operation_time >= '2017-02-22 00:00:00' AND a.operation_time < '2017-02-23 00:00:00'
+            AND  a.transfer_state <> 99 AND a.transferType = 2
+            AND a.transfer_reason<> 5 AND a.transfer_reason < 100
+            GROUP BY a.order_id )result
+            JOIN tb_order_record b ON result.order_id = b.order_id) AS a 
+查询后存 shop_coupon_return_extend 表（商城当日退款达到券面的数据、商城当日因退款返还（按比例）从这个表统计数据）			
+
+商城当日退款达到券面的数据：（数量）			
+SELECT   * FROM  shop_coupon_return_extend WHERE stat_date='2017-02-22' AND current_return_coupon_amount>=save_on			
+商城当日退款达到券面的数据：（金额）
+SELECT   SUM(current_return_coupon_amount) FROM  shop_coupon_return_extend WHERE stat_date='2017-02-22' AND current_return_coupon_amount>=save_on			
+			
+当日退款不释放：
+select a.activityid AS act_id,count(a.couponno) as coupon_return_no_release_cnt,
+        sum(a.saveon) as coupon_return_no_release_amount
+        from coupon_log a
+        where a.partitionmonth>= '201702'
+        and a.partitionmonth<= '201702'
+        and a.operationtime>= '2017-02-22'
+        and a.operationtime< '2017-02-23'
+        and a.operationtype='3' group by a.activityid
+
+使用： select b.order_id,b.product_id,b.sku_num,
+        a.coupon_no,a.coupon_price,a.pay_time,a.settlement_time,b.ext_info
+        from tb_order_record a
+        join tb_order_info_record b on a.order_id =b.order_id
+        where a.pay_time>='${beginTime}'
+         and a.pay_time<'${endTime}'  
+        and a.pay_state=1
+        and a.coupon_price!=0		
+		
+		优惠券当日使用：
+		select a.activityid AS act_id,count(a.couponno) as coupon_use_cnt,
+        sum(a.saveon) as coupon_use_amount
+        from coupon_log a
+        where a.partitionmonth>='201702'
+        and a.partitionmonth<='201702'
+        and a.usetime>='2017-02-22'
+        and a.usetime<'2017-02-23'
+        and a.status='1'
+        and a.operationtype='8'
+        and a.useflag=1 group by a.activityid
+	当日退款释放
+select a.activityid AS act_id,count(a.couponno) as coupon_return_cnt,
+        sum(a.saveon) as coupon_return_amount
+        from coupon_log a
+        where a.partitionmonth>='201702'
+        and a.partitionmonth<='201702'
+        and a.operationtime>= '2017-02-22'
+        and a.operationtime< '2017-02-23'
+        and a.status='0'
+        and a.operationtype='4' group by a.activityid
+		
+商城当日因退款返还(按实际)返还商家：分两部分数据（售后维权退款、非售后维权退款），查询后存shop_coupon_return表
+非售后维权退款查询：  select a.id trans_id ,a.transfer_reason ,a.source_id,a.order_id,
+        c.product_id ,c.sku_num,a.operation_time ,b.from_source,
+        a.amount as return_amount,
+        c.cur_price*c.count-c.discount_price as order_amount,
+        b.coupon_no,c.coupon_price,
+        b.coupon_price as order_coupon_price ,
+        c.ext_info,
+        b.closing_price - b.discount_price as order_limit_return_amount,b.closing_price as order_total_amount,
+        if(b.settlement_time='0000-00-00 00:00:00' or b.settlement_time>a.operation_time,1,0) as is_before
+        from tb_account_transfer a
+        join tb_order_record b on a.order_id=b.order_id
+        join tb_order_info_record  c on b.order_id=c.order_id
+        where a.operation_time>='2017-02-22'
+        <![CDATA[  and a.operation_time<'2017-02-23' ]]>
+        and a.transferType=2 and a.transfer_reason not in (1,2)
+        <![CDATA[  and a.transfer_reason <> 5 and a.transfer_reason < 100 and a.transfer_state<>99 ]]>
+售后维权查询 ： SELECT a.id trans_id ,a.transfer_reason ,a.source_id,a.order_id, c.product_id ,
+            c.sku_num,a.amount AS return_amount,a.operation_time ,b.from_source,
+            c.cur_price*c.count-c.discount_price AS order_amount,b.coupon_no,c.coupon_price,
+            b.coupon_price AS order_coupon_price , c.ext_info,
+            b.closing_price - b.discount_price AS order_limit_return_amount,b.closing_price AS order_total_amount,
+            IF(d.settlement_status=2,0,1) AS is_before
+            FROM tb_account_transfer a
+            JOIN tb_deduct_detail d ON a.source_id = d.source_id AND a.transfer_reason = d.source_type AND a.transferType = d.detail_type
+            JOIN tb_order_record b ON a.order_id=b.order_id
+            JOIN tb_order_info_record  c ON d.order_id=c.order_id AND d.product_id=c.product_id   AND d.sku_num=c.sku_num
+            WHERE a.operation_time>='2017-02-22' AND a.operation_time<'2017-02-23'
+            AND a.transferType = 2 AND a.transfer_reason IN (1,2) AND a.transfer_state<>99
+            AND a.transfer_reason <> 5 AND a.transfer_reason < 100  AND d.detail_status IN ( 1,2,3,4 )
+            AND d.detail_category IN ( 0,101,102,901,902,903,904,905,103,104 )		
+		
+
+tag_gmv_stat （表） 邮件名称：类目GMV日报 邮件任务：tagGmvStatMailTask 邮件数据统计任务：TagGmvStatTask
+
+SELECT * FROM refund_monitor_general WHERE product_type=6  （整体售后统计数据-每日）
+
+SELECT * FROM tag_weight_refund_simple     （加权售后统计数据-每日）
+
+
+售后率=售后数/详单数
+加权售后率：售后数*权重/详单数
+
+优化物流异常异常监控逻辑：
+需要高斌芳造数据，提供异常类型的运单号
+根据如下sql修改数据：
+SELECT
+            a.order_id,
+            a.order_state,
+            a.express_id,
+            a.express_no,
+            e.`name` city_name,
+            f.`name` province_name
+        FROM
+            tb_order_record a
+        LEFT JOIN tb_order_info_record b ON a.order_id = b.order_id
+        LEFT JOIN tb_product c ON b.product_id = c.id
+        LEFT JOIN tb_freight_template d ON c.freight_template_id = d.id
+        LEFT JOIN tb_area_dic e ON d.city_id = e.id
+        LEFT JOIN tb_area_dic f ON d.province_id = f.id
+        WHERE
+            a.deliver_time >= '${startDate}'
+        AND a.deliver_time < '${endDate}'
+        AND a.order_state NOT IN (5,7)
+        GROUP BY a.order_id
+ps：需要造发货时间在15天前到2天前的
+修改后需要执行的任务名称：suspectedFalseExpressFlowTask
+执行任务后的结果表：suspected_false_express
+
+
+dealservice中brandhot这个是品牌专场热度，跟数据库中的is_hot_brand不是一个含义，数据库里面is_hot_brand代表是否是爆团，如果hotBrandMark字段的值in(1,2,3,5)的话就表示是爆团，那么is_hot_brand=1,否则is_hot_brand=0
+通過查看日誌，得到sql，然后根据sql后面的时间参数得到查询sql
+
+查询首次相应时间sql：
+SELECT
+        a.refund_id,
+        b.responsible_person_id,b.responsible_person_name,
+        b.apply_time,
+        MIN(a.operation_time) AS first_res_time
+FROM
+        tb_refund_history a
+LEFT JOIN tb_refund b ON a.refund_id = b.refund_id
+WHERE
+        a.refund_id IN (
+                SELECT DISTINCT
+                        refund_id
+                FROM
+                        tb_refund_history
+                WHERE
+                        (
+                                 (operation_type IN (37, 36, 44, 3, 52,6))
+                                 OR (operation_type = 29 AND is_show = 2)
+                        )
+                AND operator_type = 3
+                AND operation_time >= '2017-02-09'
+                AND operation_time < '2017-02-10'
+        )
+AND (
+                                 (a.operation_type IN (37, 36, 44, 3, 52,6))
+                                 OR (a.operation_type = 29 AND a.is_show = 2)
+                        )
+AND operator_type = 3
+GROUP BY
+        a.refund_id
+HAVING first_res_time >= '2017-02-09' AND first_res_time < '2017-02-10';
+
+
+陈伶俐QQ:576328517
+
+
+无线Push消息：
+接口信息：
+ 这个接口是小米渠道设备信息注册成功后的上报（通过这个接口就可以实现设备注册）
+ deviceinfo/gt 表示个推上报， deviceinfo/xg表示信鸽渠道上报， deviceinfo/hw表示华为渠道上报
+ deviceId=a000005575db95
+http://m.api.zhe800.com/push/deviceinfo?token=q8LCwLkKPIXbKP4lk9p8Oe7xyF%2Fv6fpqDmINojxhMAk%3D&brand=OPPO&sdk=xm&model=OPPO%20R7&user_type=1&user_role=1&student=0&osversion=Android4.4.4&recievemsg=1&close_type=
+
+
+
+之前遇到验证绑定手机，发送短信报系统异常问题：解决方式同步一下，
+需要在    passport_serv_rebate这个服务所在的容器里面配置kujia域名的host（配置host192.168.100.121 m.kujia.com passport.kujia.com acode.kujia.com log.tiaotiaokujia.com j.tiaotiaokujia.com  img1.tiaotiaokujia.com  ，其中ip换成自己隔离区的ip）。但是由于base环境可能其他同学在用，所以最好在自己的隔离区拉一个这个服务配置。
+另外 ：新的提测环境 ，应该是不需要再配置这个的。
+
+酷价：
+
+http://test.tuan800-inc.com/fe/#/testdetails/10009?_k=nwe7lj
+
+同步商品到折800：
+二合一
+隐藏券 m.mark shop ;activity_type--
+
+创建、更新；
+高佣：
+营销计划：立即、分享
+定向计划：
+鹊桥计划
+酷价更新列表页banner的rake：
+bundle exec rake banner:page_banners RAILS_ENV=production
+限时抢rake，这是pc的
+bundle exec rake public:xianshiqiang RAILS_ENV=production 
+这个是客户端的：
+bundle exec rake xsq_native:banners_sessions RAILS_ENV=production
+同步M站主站热搜词、关键词，这些热搜词、关键词搜索来源于zhebuy后台配置：
+bundle exec rake mzhan:sync_hot_search_words RAILS_ENV=production 
+主站
+bundle exec rake public:hotwords RAILS_ENV=production 
+
+M站
+mzhan:sync_hot_search_words
+
+解决fiddler 抓不到https请求的办法
+http://www.07net01.com/2016/12/1738252.html
+已多人多次实践，有效。
+
+
+
+K1老环境需要的host：
+#新环境的
+192.168.100.126 m.kujia.com 
+#新环境的    
+192.168.100.126 passport.kujia.com 
+#旧环境的
+172.28.1.98   j.tiaotiaokujia.com 
+#172.28.8.199  j.tiaotiaokujia.com
+192.168.100.118  img1.tiaotiaokujia.com 
+172.28.1.200 img2.tiaotiaokujia.com 
+172.28.1.200 img3.tiaotiaokujia.com 
