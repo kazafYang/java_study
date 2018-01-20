@@ -1,0 +1,27 @@
+selenium + java 环境安装：
+http://blog.csdn.net/u011541946/article/details/72898514
+
+package Test;
+
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class webdriverdemo {
+
+public static void main(String[] args) {
+
+           // TODO Auto-generated method stub
+
+//设置访问ChromeDriver的路径
+
+System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
+
+           WebDriver driver = new ChromeDriver();
+           driver.get("http://www.baidu.com/");
+}
+}
+
