@@ -1,6 +1,8 @@
 selenium + java 环境安装：
 http://blog.csdn.net/u011541946/article/details/72898514
-
+1、准备java环境
+2、下载selenium的jar文件
+3、新建java工程，将jar文件引入进来
 package Test;
 
 import java.sql.Time;
