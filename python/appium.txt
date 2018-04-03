@@ -1,0 +1,91 @@
+1、根据虫师给的安装方式进行安装 网址（http://www.cnblogs.com/fnng/p/4560298.html）
+
+2、当android为7.0版本时会出现一些兼容性问题，具体的修改方法为：
+
+
+文件路径： C:\Program Files (x86)\Appium\node_modules\appium\lib\devices\android\android.js
+ps：注释掉下面的两行代码，大概在113行左右
+    this.initUnicode.bind(this),
+	//20180403 取消每次安装appsettings和unlock两个应用
+    //this.pushSettingsApp.bind(this),
+    //this.pushUnlock.bind(this),
+    function (cb) {this.uiautomator.start(cb);}.bind(this),
+
+1、找到appium安装目录下的adb.js文件，目录为：Appium\node_modules\appium\node_modules\appium-adb\lib
+
+2、打开adb.js,可使用notepad++编辑器等打开文件（说明：在修改代码的时候先注释掉以前的代码，并且添加自己容易识别的标记，以防出错后还有回旋的余地，或者将代码备份也可行），找到如下代码：
+
+ADB.prototype.shell = function (cmd, cb) {
+  if (cmd.indexOf('"') === -1) {
+    cmd = '"' + cmd + '"';
+  }
+  var execCmd = 'shell ' + cmd;
+  this.exec(execCmd, cb);
+在这段代码下面加入如下代码：
+
+ADB.prototype.shell_grep = function (cmd, grep, cb) {
+  if (cmd.indexOf('"') === -1) {
+    cmd = '"' + cmd + '"';
+  }
+  var execCmd = 'shell ' + cmd + '| grep ' + grep;
+  this.exec(execCmd, cb);
+};
+再次找到如下代码：
+
+ADB.prototype.getPIDsByName = function (name, cb) {
+  logger.debug("Getting all processes with ‘" + name + "‘");
+  this.shell("ps ‘" + name + "‘", function (err, stdout) {
+    if (err) return cb(err);
+    stdout = stdout.trim();
+    var procs = [];
+    var outlines = stdout.split("\n");
+    outlines.shift();
+    _.each(outlines, function (outline) {
+      if (outline.indexOf(name) !== -1) {
+        procs.push(outline);
+      }
+    });
+    if (procs.length < 1) {
+      logger.debug("No matching processes found");
+      return cb(null, []);
+    }
+    var pids = [];
+    _.each(procs, function (proc) {
+      var match = /[^\t ]+[\t ]+([0-9]+)/.exec(proc);
+      if (match) {
+        pids.push(parseInt(match[1], 10));
+      }
+    });
+    if (pids.length !== procs.length) {
+      var msg = "Could not extract PIDs from ps output. PIDS: " +
+                JSON.stringify(pids) + ", Procs: " + JSON.stringify(procs);
+      return cb(new Error(msg));
+    }
+    cb(null, pids);
+  });
+};
+将以上代码注释掉，替换成如下代码：
+
+ADB.prototype.getPIDsByName = function (name, cb) {
+  logger.debug("Getting all processes with ‘" + name + "‘");
+  this.shell_grep("ps", name, function (err, stdout) {
+    if (err) {
+      logger.debug("No matching processes found");
+      return cb(null, []);
+    }
+    var pids = [];
+    _.each(procs, function (proc) {
+    var match = /[^\t ]+[\t ]+([0-9]+)/.exec(proc);
+    if (match) {
+    pids.push(parseInt(match[1], 10));
+    }
+    });
+    if (pids.length !== procs.length) {
+      var msg = "Could not extract PIDs from ps output. PIDS: " +
+      JSON.stringify(pids) + ", Procs: " + JSON.stringify(procs);
+      return cb(new Error(msg));
+    }
+    cb(null, pids);
+  });
+};
+3、重启appium，连接手机成功运行看到解决问题已ok
